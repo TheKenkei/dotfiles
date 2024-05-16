@@ -11,3 +11,6 @@ end, { desc = "Search symbols" })
 
 del("n", "<leader>q")
 map("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Lsp diagnostic loclist" })
+
+map("n", "[[", vim.diagnostic.goto_prev, { desc = "Lsp prev diagnostic" })
+map("n", "]]", vim.diagnostic.goto_next, { desc = "Lsp next diagnostic" })
