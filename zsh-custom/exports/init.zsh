@@ -1,0 +1,12 @@
+export EDITOR=nvim
+export H=/mnt/h/
+export G=/mnt/g/
+export DOWNLOAD=/mnt/g/Download/
+export NVM_DIR="$HOME/.nvm"
+export ZSH_CONFIG=${ZSH_CUSTOM}/kenkei/custom.zsh
+export NVIM_CONFIG=${HOME}/.config/nvim
+export PATH="/home/linuxbrew/.linuxbrew/opt/php@8.2/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/php@8.2/sbin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/php@8.2/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/php@8.2/sbin:$PATH"
+export PATH="/home/kenkei/.bun/bin:$PATH"

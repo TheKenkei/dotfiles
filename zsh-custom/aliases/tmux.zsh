@@ -1,0 +1,5 @@
+alias t-routelink="tmux new -s routelink -c ~/projects/RouteLink.ru|| tmux a -t routelink"
+alias t-nvim-config="tmux new -s nvim-config -c ~/.config/nvim || tmux a -t nvim-config"
+alias t-kenkei="tmux new -s kenkei || tmux a -t kenkei"
+alias t-npm="tmux new -s npm || tmux a -t npm"
+alias t-routelink="tmux new -s routelink -c ~/projects/RouteLink.ru|| tmux a -t routelink"
