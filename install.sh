@@ -1,21 +1,42 @@
 
 #!/bin/bash 
 
-#ZSH 
-ln -s  $HOME~/.dotfiles/zshrc $HOME/.zshrc
-echo "source $ZSH_CUSTOM/kenkei/custom.zsh" >> $ZSH_CUSTOM/example.zsh;
-
-
-#TMUX
-ln -s  $HOME~/.dotfiles/tmux.conf $HOME/.tmux.conf
-
-
-
 #brew 
 echo " install brew "
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+echo >> $HOME/.bashrc
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ${HOME}/.bashrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+sudo apt-get install build-essential
 
 echo "install brew packages..." 
-brew install nvim lazygit ripgrep bat eza fzf fd 
+brew install gcc nvim lazygit ripgrep bat eza fzf fd 
+
+
+#ZSH 
+echo "install zsh packages..." 
+
+echo "install fzf-zsh-plugin" 
+git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin
+
+echo "install zsh-syntax-highlighting" 
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+echo "install zsh-autosuggestions" 
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+
+
+echo "source ~/.dotfiles/zshrc" >> $HOME/.zshrc
+
+
+#TMUX
+ln -s  $HOME~/.dotfiles/tmux.conf $HOME/.tmux.conf
+echo "install tpm plugin" 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+
+

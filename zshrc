@@ -1,132 +1,141 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+export EDITOR=nvim
+export H=/mnt/h/
+export G=/mnt/g/
+export DOWNLOAD=/mnt/g/Download/
+export NVM_DIR="$HOME/.nvm"
+export ZSH_CONFIG=${ZSH_CUSTOM}/kenkei/custom.zsh
+export NVIM_CONFIG=${HOME}/.config/nvim
+export PATH="/home/linuxbrew/.linuxbrew/opt/php@8.2/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/php@8.2/sbin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/php@8.2/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/php@8.2/sbin:$PATH"
+export PATH="/home/kenkei/.bun/bin:$PATH"
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.config/kenkei/zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="kenkei"
+# Определение основного приглашения
+PROMPT='%{$fg[cyan]%}%~%{$reset_color%} %(?:%{$fg_bold[green]%}%1{➜%}:%{$fg_bold[red]%}%1{➜%}) '
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# Определение правого приглашения
+RPROMPT='$(git_prompt_info)'
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Настройки для вывода информации о Git
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}%1{✗%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+plugins=(git fzf-zsh-plugin sudo gh z brew npm docker docker-compose gh zsh-syntax-highlighting zsh-autosuggestions web-search dirhistory)
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+alias dc="docker compose"
+alias drestart="docker compose down && docker compose up -d && docker compose logs -f"
+alias de="docker exec -it "
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+alias de-db="docker exec -it postgres su postgres"
+alias dl="docker logs -f "
+alias nginx-start-fast="docker run --name nginx -v .:/app:ro -p 80:80 --rm nginx:alpine"
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+alias update="clear && echo source ~/.zshrc && source ~/.zshrc"
+alias ls="eza --tree --group-directories-first --level=1 --icons=always --no-time  --no-user --no-permissions"
+alias l="ls --long --all -h --git"
+alias l-size="l --total-size"
+alias lg="lazygit"
+alias cl="clear"
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+alias ZSHCONFIGEDIT="nvim ~/.dotfiles/zshrc"
+alias NVIMCONFIGEDIT="cd ~/.config/nvim/lua ; nvim ; cd - "
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+alias brew-update="brew update -d --auto-update --verbose --force --debug"
+alias mkdir="mkdir -p"
+alias bun-clear="rm -rf ~/.cache/ ~/.bun/install/cache/ ~/.npm/"
+alias nvim-cache-clear="rm -rf  ~/.local/{share,state}/nvim ~/.cache/nvim"
+alias cat="bat"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+bindkey "^[h" backward-char  # Перемещение влево на один символ
+bindkey "^[l" forward-char   # Перемещение вправо на один символ
+bindkey "^[w" forward-word
+bindkey "^[b" backward-word
+bindkey "^[d" kill-word
+bindkey "^[D" kill-line
+zle-end-of-word() {
+zle forward-word      # Перемещаемся к началу следующего слова
+zle backward-char     # Возвращаемся на один символ назад
+}
+zle -N zle-end-of-word  # Регистрируем функцию как zle-команду
+bindkey "^[e" zle-end-of-word  # Назначаем команду на Alt + e
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+export LAZY="${HOME}/.local/share/nvim/lazy"
+export MASON="${HOME}/.local/share/nvim/mason"
+alias vim="nvim"
+alias v="nvim"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=( 
-    git
-    fzf-zsh-plugin
-    sudo
-    gh
-    z
-    brew
-    npm
-    docker
-    docker-compose
-    gh
-    zsh-syntax-highlighting
-    zsh-autosuggestions
-    web-search
-    dirhistory
-)
+alias npm="npm -d"
+alias nx="npx nx"
+alias npm-clear="rm -rf ~/.npm ~/.cache/"
+alias nr="npm run"
+alias nrs="npm run start"
+alias nrb="npm run build"
+alias npmi="rm -rf $HOME/.npm ~/.cache/ node_modules/ && npm i"
+alias yarni="rm -rf $HOME/.yarn/berry/ $HOME/.cache/yarn node_modules && yarn"
+alias precommit="rm -rf node_modules && npm ci && npm run typecheck && npm run test && npm run build && npm run start"
+alias precommit-pnpm="rm -rf node_modules && pnpm i && pnpm run typecheck && pnpm run test && pnpm run build && pnpm run start"
+
+alias br="bun run"
+alias bi="bun install"
+
+targz() {
+    echo "taring $1 in $1.tar.gz ... "
+    tar -czf $1.tar.gz $1
+    if [ "$2" = "--rm" ]; then
+        echo "deling $1 ..."
+        rm -rf $1
+    fi
+    echo "done!"
+}
+
+
+
+
+backup() {
+    local source_dir="$1"
+    local backup_dir="${source_dir}-backup"
+    local remove_source="$2"
+
+    echo "Backing up ${source_dir} to ${backup_dir}..."
+    cp -r "${source_dir}" "${backup_dir}"
+
+    if [[ "${remove_source}" == "--rm" ]]; then
+        echo "Removing ${source_dir}..."
+        rm -rf "${source_dir}"
+    fi
+
+    echo "Done!"
+}
+
+yy() {
+    local temp_file="$(mktemp -t "yazi_cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$temp_file"
+    local new_directory="$(cat -- "$temp_file")"
+    if [ -n "$new_directory" ] && [ "$new_directory" != "$PWD" ]; then
+        cd "$new_directory"
+    fi
+    rm -f -- "$temp_file"
+}
+ff ()
+{
+    fd . | grep $1
+}
+
+
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
-
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-# Load Angular CLI autocompletion.
 source <(ng completion script)
-# eval "$(starship init zsh)"
 
