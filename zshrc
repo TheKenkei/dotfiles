@@ -49,7 +49,7 @@ alias NVIMCONFIGEDIT="cd ~/.config/nvim/lua ; nvim ; cd - "
 alias brew-update="brew update -d --auto-update --verbose --force --debug"
 alias mkdir="mkdir -p"
 alias bun-clear="rm -rf ~/.cache/ ~/.bun/install/cache/ ~/.npm/"
-alias nvim-cache-clear="rm -rf  ~/.local/{share,state}/nvim ~/.cache/nvim"
+alias nvim-cache-clear="rm -rf  ~/.local/state/nvim ~/.cache/nvim"
 alias cat="bat"
 
 bindkey "^[h" backward-char  # Перемещение влево на один символ
