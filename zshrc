@@ -43,7 +43,7 @@ alias l-size="l --total-size"
 alias lg="lazygit"
 alias cl="clear"
 
-alias ZSHCONFIGEDIT="nvim ~/.dotfiles/zshrc"
+alias ZSHCONFIGEDIT="cd ~/.dotfiles ;  nvim ; cd - "
 alias NVIMCONFIGEDIT="cd ~/.config/nvim/lua ; nvim ; cd - "
 
 alias brew-update="brew update -d --auto-update --verbose --force --debug"
