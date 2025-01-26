@@ -36,7 +36,7 @@ alias de-db="docker exec -it postgres su postgres"
 alias dl="docker logs -f "
 alias nginx-start-fast="docker run --name nginx -v .:/app:ro -p 80:80 --rm nginx:alpine"
 
-alias update="clear && echo source ~/.zshrc && source ~/.zshrc"
+alias update="clear && echo source ~/.zshrc && source ~/.zshrc && clear"
 alias ls="eza --tree --group-directories-first --level=1 --icons=always --no-time  --no-user --no-permissions"
 alias l="ls --long --all -h --git"
 alias l-size="l --total-size"
