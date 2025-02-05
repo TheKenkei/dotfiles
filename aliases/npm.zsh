@@ -7,8 +7,8 @@ alias npm-clear="rm -rf ~/.npm ~/.cache/"
 alias npmi="npm-clear node_modules && npm i"
 
 
-alias nrs="rm -rf .angular node_modules/.cache .nx &&  npm run start"
-alias nrb="npm run build"
+alias nrs="rm -rf .angular node_modules/.cache .nx && npm run start"
+alias nrb="rm -rf .angular node_modules/.cache dist .nx && npm run build"
 
 alias yarni="rm -rf $HOME/.yarn/berry/ $HOME/.cache/yarn node_modules && yarn"
 

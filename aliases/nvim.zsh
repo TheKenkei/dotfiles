@@ -1,7 +1,7 @@
 export LAZY="${HOME}/.local/share/nvim/lazy"
 export MASON="${HOME}/.local/share/nvim/mason"
 
-alias nvim="nvim +NvimTreeToggle"
+alias nvim="nvim"
 alias vim="nvim"
 alias v="nvim"
 
