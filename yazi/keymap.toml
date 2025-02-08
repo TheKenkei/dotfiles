@@ -220,16 +220,23 @@ keymap = [
     # Goto
     { on = [
         "g",
+        "c",
+        "z",
+    ], run = "cd ~/.dotfiles/", desc = "Go dotfiles config" },
+
+    { on = [
+        "g",
+        "c",
+        "n",
+    ], run = "cd ~/.config/nvim/lua/", desc = "Go config nvim " },
+    { on = [
+        "g",
         "h",
     ], run = "cd ~", desc = "Go home" },
     { on = [
         "g",
         "p",
     ], run = "cd /projects", desc = "Goto to projects" },
-    { on = [
-        "g",
-        "c",
-    ], run = "cd ~/.config", desc = "Goto ~/.config" },
     { on = [
         "g",
         "d",
