@@ -13,7 +13,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 sudo apt-get install build-essential
 
 echo "install brew packages..." 
-brew install gcc nvim lazygit ripgrep bat eza fzf fd  python-setuptools
+brew install gcc nvim lazygit ripgrep bat eza fzf fd  python-setuptools yazi zoxide xclip brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick 
 
 
 #ZSH 
@@ -34,9 +34,11 @@ echo "source ~/.dotfiles/zshrc" >> $HOME/.zshrc
 
 
 #TMUX
-ln -s  $HOME~/.dotfiles/tmux.conf $HOME/.tmux.conf
+ln -s  $HOME/.dotfiles/tmux.conf $HOME/.tmux.conf
 echo "install tpm plugin" 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+ln -s  $HOME/.dotfiles/yazi $HOME/.config/yazi
 
 
 

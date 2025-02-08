@@ -63,22 +63,21 @@ backup() {
     echo "Done!"
 }
 
-yy() {
-    local temp_file="$(mktemp -t "yazi_cwd.XXXXXX")"
-    yazi "$@" --cwd-file="$temp_file"
-    local new_directory="$(cat -- "$temp_file")"
-    if [ -n "$new_directory" ] && [ "$new_directory" != "$PWD" ]; then
-        cd "$new_directory"
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
     fi
-    rm -f -- "$temp_file"
+    rm -f -- "$tmp"
 }
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 source <(ng completion script)
+eval "$(zoxide init zsh)"
 
 
 
