@@ -16,7 +16,7 @@ export PATH="/home/kenkei/.bun/bin:$PATH"
 
 
 
-alias ZSHCONFIGEDIT="cd ~/.dotfiles ;  nvim ; cd - "
+alias ZSHCONFIGEDIT="cd ~/.dotfiles ;  nvim ; cd - && source ~/.zshrc"
 
 
 
