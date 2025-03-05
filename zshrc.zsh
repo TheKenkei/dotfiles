@@ -63,6 +63,7 @@ backup() {
     echo "Done!"
 }
 
+alias q="y"
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     yazi "$@" --cwd-file="$tmp"
@@ -71,6 +72,18 @@ function y() {
     fi
     rm -f -- "$tmp"
 }
+
+
+find ()
+{
+    rg $1 --files-with-matches | fzf --preview 'bat --color=always {}' | xargs nvim;
+
+}
+
+
+
+
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
