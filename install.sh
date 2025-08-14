@@ -6,14 +6,14 @@ echo " install brew "
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-echo >> $HOME/.bashrc
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ${HOME}/.bashrc
+echo >> $HOME/.zshrc
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ${HOME}/.zshrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 sudo apt-get install build-essential
 
 echo "install brew packages..." 
-brew install gcc nvim lazygit ripgrep bat eza fzf fd  python-setuptools yazi zoxide xclip brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick 
+brew install gcc nvim lazygit ripgrep bat eza fzf fd  python-setuptools yazi zoxide xclip  yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick 
 
 
 #ZSH 
