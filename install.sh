@@ -13,7 +13,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 sudo apt-get install build-essential
 
 echo "install brew packages..." 
-brew install gcc nvim lazygit ripgrep bat eza fzf fd  python-setuptools yazi zoxide xclip  yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick 
+brew install gcc nvim lazygit ripgrep bat eza fzf fd  python-setuptools yazi zoxide xclip  yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick git-flow 
 
 
 #ZSH 
