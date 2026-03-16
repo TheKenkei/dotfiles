@@ -13,7 +13,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 sudo apt-get install build-essential
 
 echo "install brew packages..." 
-brew install gcc nvim lazygit ripgrep bat eza fzf fd  python-setuptools yazi zoxide xclip  yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick git-flow 
+brew install gcc nvim lazygit ripgrep bat eza fzf fd  python-setuptools yazi zoxide xclip  yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick git-flow rust java
 
 
 #ZSH 
@@ -42,3 +42,17 @@ ln -s  $HOME/.dotfiles/yazi $HOME/.config/yazi
 
 
 
+sudo apt-get install -y \
+    libnspr4 \
+    libnss3 \
+    libdbus-1-3 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxfixes3 \
+    libxrandr2 \
+    libgbm1 \
+    libasound2 \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libpangocairo-1.0-0 \
+    libcups2

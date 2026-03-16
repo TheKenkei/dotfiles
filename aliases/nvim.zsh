@@ -9,3 +9,4 @@ alias NVIMCONFIGEDIT="cd ~/.config/nvim ; nvim ; cd - "
 
 alias nvim-cache-clear="rm -rf  ~/.local/state/nvim ~/.cache/nvim"
 alias nvim-cache-clear-all="nvim-cache-clear && rm -rf ~/.local/share/nvim"
+alias nvim-backup="tar -czf nvim.backup.tar.gz ~/.config/nvim ~/.local/share/nvim/"

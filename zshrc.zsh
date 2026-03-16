@@ -89,10 +89,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-source <(ng completion script)
 eval "$(zoxide init zsh)"
 
 
 
 source ~/.dotfiles/aliases/index.zsh
-
+# bindkey '^ ' autosuggest-accept
+# bindkey '^[f' autosuggest-accept-word     # Alt+f для одного слова
+bindkey '^e' forward-word               # Alt+f для движения вперед на одно слово
