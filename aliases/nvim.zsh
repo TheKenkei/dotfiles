@@ -1,5 +1,5 @@
-export LAZY="${HOME}/.local/share/nvim/lazy"
-export MASON="${HOME}/.local/share/nvim/mason"
+# export LAZY="${HOME}/.local/share/nvim/lazy"
+# export MASON="${HOME}/.local/share/nvim/mason"
 
 alias nvim="nvim"
 alias vim="nvim"
